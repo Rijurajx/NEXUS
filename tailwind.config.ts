@@ -52,7 +52,7 @@ export default {
   			}
   		},
   		animation: {
-  			shimmer: 'shimmer 0.1s linear infinite'
+  			shimmer: 'shimmer 2s linear infinite'
   		},
   		keyframes: {
   			shimmer: {
