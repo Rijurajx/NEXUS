@@ -3,6 +3,7 @@ import React from "react";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import { Spotlight } from "../ui/spotlight-new";
 import ShimmerButton from "./shimmer-button";
+import Link from "next/link";
 
 export function SpotlightEffect() {
   return (
@@ -22,7 +23,12 @@ export function SpotlightEffect() {
         {/* CTA Button Centered */}
         <div className="mt-6 flex justify-center">
           <SignedIn>
-            <ShimmerButton />
+          <Link href="/dashboard">
+            <button className="inline-flex h-12 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-transform duration-300 ease-in-out  hover:scale-110">
+              Get Started
+              
+            </button>
+          </Link>
           </SignedIn>
           <SignedOut>
             <SignInButton
@@ -31,7 +37,7 @@ export function SpotlightEffect() {
               forceRedirectUrl={"/dashboard"}
             >
               <button className="inline-flex h-12 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-transform duration-300 ease-in-out  hover:scale-110">
-                Get Started
+                Sign In
               </button>
             </SignInButton>
           </SignedOut>
