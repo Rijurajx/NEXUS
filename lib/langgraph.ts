@@ -1,4 +1,16 @@
 import { ChatAnthropic } from "@langchain/anthropic";
+import { ToolNode } from "@langchain/langgraph/prebuilt";
+import wxflows from "@wxflows/sdk/langchain";
+// Connect to wxflows
+const toolClient = new wxflows({
+  endpoint: process.env.WXFLOWS_ENDPOINT || "",
+  apikey: process.env.WXFLOWS_APIKEY,
+});
+
+// Retrieve the tools
+const tools = await toolClient.lcTools;
+const toolNode = new ToolNode(tools);
+
 const initialiseModel = () => {
   const model = new ChatAnthropic({
     modelName: "claude-3-5-sonnet-20241022",
@@ -31,10 +43,10 @@ const initialiseModel = () => {
           }
         },
         // handleLLMNewToken: async (token: string) => {
-        //   // console.log("🔤 New token:", token);
+        // console.log("🔤 New token:", token);
         // },
       },
     ],
-  });
+  }).bindTools(tools);
   return model;
 };
