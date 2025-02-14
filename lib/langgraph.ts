@@ -1,6 +1,13 @@
 import { ChatAnthropic } from "@langchain/anthropic";
 import { ToolNode } from "@langchain/langgraph/prebuilt";
 import wxflows from "@wxflows/sdk/langchain";
+import {
+  END,
+  MessagesAnnotation,
+  START,
+  StateGraph,
+} from "@langchain/langgraph";
+import SYSTEM_MESSAGE from "@/constants/systemMessage";
 // Connect to wxflows
 const toolClient = new wxflows({
   endpoint: process.env.WXFLOWS_ENDPOINT || "",
@@ -55,4 +62,9 @@ const initialiseModel = () => {
 //create a workflow
 const createWorkflow = () => {
   const model = initialiseModel();
+  const stateGraph = new StateGraph(MessagesAnnotation).addNode('agent', async (state) => {
+    // Create the system message content
+    const systemContent = SYSTEM_MESSAGE;
+  });
+  
 }
