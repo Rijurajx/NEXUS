@@ -33,7 +33,6 @@ const trimmer = trimMessages({
   allowPartial: false,
   startOn: "human",
 });
-
 const initialiseModel = () => {
   const model = new ChatAnthropic({
     modelName: "claude-3-5-sonnet-20241022",
