@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import { ChatRequestBody } from "@/lib/types";
+import { createSSEParser } from "@/lib/createSSEParser";
 
 interface ChatInterfaceProps {
   chatId: Id<"chats">;
@@ -22,6 +23,27 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, streamedResponse]);
+
+  /**
+   * Processes a ReadableStream from the SSE response.
+   * This function continuously reads chunks of data from the stream until it's done.
+   * Each chunk is decoded from Uint8Array to string and passed to the callback.
+   */
+
+  const processStream = async (
+    reader: ReadableStreamDefaultReader<Uint8Array>,
+    onChunk: (chunk: string) => Promise<void>
+  ) => {
+    try {
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        await onChunk(new TextDecoder().decode(value));
+      }
+    } finally {
+      reader.releaseLock();
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,6 +89,17 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
 
       if (!response.ok) throw new Error(await response.text());
       if (!response.body) throw new Error("No response body available");
+
+      //-----Handle the stream-------//
+      ///create SSE parser and stream reader
+      const parser = createSSEParser();
+      const reader = response.body.getReader();
+
+      await processStream(reader, async (chunk) => {
+        // Parse SSE messages from the chunk
+        const messages = parser.parse(chunk);
+        
+      });
 
       // Process streamed response (implementation needed)
     } catch (error) {
