@@ -50,3 +50,9 @@ const initialiseModel = () => {
   }).bindTools(tools);
   return model;
 };
+
+
+//create a workflow
+const createWorkflow = () => {
+  const model = initialiseModel();
+}
