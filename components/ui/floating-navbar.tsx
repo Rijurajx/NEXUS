@@ -1,12 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import {
-  motion,
-  AnimatePresence,
-} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { SignInButton } from "@clerk/nextjs";
 
 export const FloatingNav = ({
   navItems,
@@ -62,12 +60,17 @@ export const FloatingNav = ({
               <span className="hidden sm:block text-sm">{navItem.name}</span>
             </Link>
           ))}
-          <button
-            onClick={() => router.push("/pages/I-AM-COGITO")}
-            className="border  text-sm font-medium relative border-gray-700 dark:border-white/[0.2] text-white dark:text-white px-4 py-2 rounded-full">
-            <span>Login</span>
-            <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px" />
-          </button>
+          <SignInButton
+            mode="modal"
+            fallbackRedirectUrl={"/dashboard"}
+            forceRedirectUrl={"/dashboard"}
+            
+          >
+            <button className="border  text-sm font-medium relative border-gray-700 dark:border-white/[0.2] text-white dark:text-white px-4 py-2 rounded-full">
+              <span>Login</span>
+              <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px" />
+            </button>
+          </SignInButton>
         </motion.div>
       )}
     </AnimatePresence>
