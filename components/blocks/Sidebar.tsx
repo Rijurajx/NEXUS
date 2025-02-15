@@ -47,7 +47,7 @@ const Sidebar = (props: Props) => {
       )}
       <div
         className={cn(
-          "fixed md:inset-y-0 top-14 bottom-0 left-0 z-50 w-72 bg-[#171717] backdrop-blur-xl border-r border-gray-200/50 transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:top-0 flex flex-col",
+          "fixed md:inset-y-0 top-14 bottom-0 left-0 z-50 w-72 bg-[#171717] backdrop-blur-xl  transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:top-0 flex flex-col",
           isMobileNavOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >

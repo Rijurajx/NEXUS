@@ -263,7 +263,7 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
       </section>
 
       {/* Footer Input */}
-      <footer className="border-t border-b border-gray-500 bg-[#303030] p-4">
+      <footer className=" bg-[#303030] p-4">
         <form onSubmit={handleSubmit} className="max-w-4xl mx-auto relative">
           <div className="relative flex items-center">
             <input
