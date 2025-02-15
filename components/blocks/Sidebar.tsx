@@ -51,7 +51,7 @@ const Sidebar = (props: Props) => {
           isMobileNavOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
-        <div className="p-4 border-b border-gray-200/50">
+        <div className="p-2 border-b border-gray-200/50">
           <Button
             onClick={handleNewChat}
             className="w-full bg-gray-200 hover:bg-gray-50 text-gray-700 border border-gray-200/50 shadow-sm hover:shadow transition-all duration-200"
