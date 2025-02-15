@@ -12,6 +12,8 @@ import { auth } from "@clerk/nextjs/server";
 import { AIMessage, HumanMessage, ToolMessage } from "@langchain/core/messages";
 import { NextResponse } from "next/server";
 
+export const runtime = "edge";
+
 function sendSSEMessage(
   writer: WritableStreamDefaultWriter<Uint8Array>,
   data: StreamMessage
@@ -30,9 +32,11 @@ export async function POST(req: Request) {
     if (!userId) {
       return new Response("Unauthorized", { status: 401 });
     }
+
     const { messages, newMessage, chatId } =
       (await req.json()) as ChatRequestBody;
     const convex = getConvexClient();
+
     // Create stream with larger queue strategy for better performance
     const stream = new TransformStream({}, { highWaterMark: 1024 });
     const writer = stream.writable.getWriter();
@@ -46,9 +50,9 @@ export async function POST(req: Request) {
       },
     });
 
-    const startStream = async () => {
+    // Handle the streaming response
+    (async () => {
       try {
-        //streaming will be implemented here
         // Send initial connection established message
         await sendSSEMessage(writer, { type: StreamMessageType.Connected });
 
@@ -58,8 +62,7 @@ export async function POST(req: Request) {
           content: newMessage,
         });
 
-        // convert messages to langchain format
-
+        // Convert messages to LangChain format
         const langChainMessages = [
           ...messages.map((msg) =>
             msg.role === "user"
@@ -72,9 +75,11 @@ export async function POST(req: Request) {
         try {
           // Create the event stream
           const eventStream = await submitQuestion(langChainMessages, chatId);
+
           // Process the events
           for await (const event of eventStream) {
             // console.log("🔄 Event:", event);
+
             if (event.event === "on_chat_model_stream") {
               const token = event.data.chunk;
               if (token) {
@@ -102,10 +107,10 @@ export async function POST(req: Request) {
                 output: event.data.output,
               });
             }
-
-            // Send completion message without storing the response
-          await sendSSEMessage(writer, { type: StreamMessageType.Done });
           }
+
+          // Send completion message without storing the response
+          await sendSSEMessage(writer, { type: StreamMessageType.Done });
         } catch (streamError) {
           console.error("Error in event stream:", streamError);
           await sendSSEMessage(writer, {
@@ -117,7 +122,7 @@ export async function POST(req: Request) {
           });
         }
       } catch (error) {
-        console.error("error in stream", error);
+        console.error("Error in stream:", error);
         await sendSSEMessage(writer, {
           type: StreamMessageType.Error,
           error: error instanceof Error ? error.message : "Unknown error",
@@ -125,14 +130,13 @@ export async function POST(req: Request) {
       } finally {
         try {
           await writer.close();
-          
         } catch (closeError) {
           console.error("Error closing writer:", closeError);
-          
         }
       }
-    };
-    startStream();
+    })();
+
+    return response;
   } catch (error) {
     console.error("Error in chat API:", error);
     return NextResponse.json(
