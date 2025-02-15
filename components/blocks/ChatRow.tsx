@@ -2,9 +2,8 @@ import { useRouter } from "next/navigation";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Button } from "@/components/ui/button";
-import { PlusIcon, TrashIcon } from "@radix-ui/react-icons";
+import {  TrashIcon } from "@radix-ui/react-icons";
 import { Doc, Id } from "@/convex/_generated/dataModel";
-import { cn } from "@/lib/utils";
 import { useNavigation } from "@/lib/NavigationProvider";
 import { formatDistanceToNow } from "date-fns";
 
