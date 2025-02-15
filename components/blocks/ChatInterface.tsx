@@ -43,9 +43,6 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
   ) => {
     const terminalHtml = `<div class="bg-[#1e1e1e] text-white font-mono p-2 rounded-md my-2 overflow-x-auto whitespace-normal max-w-[600px]">
       <div class="flex items-center gap-1.5 border-b border-gray-700 pb-1">
-        <span class="text-red-500">●</span>
-        <span class="text-yellow-500">●</span>
-        <span class="text-green-500">●</span>
         <span class="text-gray-400 ml-1 text-sm">~/${tool}</span>
       </div>
       <div class="text-gray-400 mt-1">$ Input</div>
@@ -163,7 +160,7 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
               if ("tool" in message && currentTool) {
                 // Replace the "Processing..." message with actual output
                 const lastTerminalIndex = fullResponse.lastIndexOf(
-                  '<div class="bg-[#1e1e1e]'
+                  '<div bg-[#1e1e1e]'
                 );
                 if (lastTerminalIndex !== -1) {
                   fullResponse =
@@ -230,7 +227,7 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
   return (
     <main className="flex flex-col h-[calc(100vh-theme(spacing.14))]">
       {/* Messages */}
-      <section className="flex-1 overflow-y-auto bg-gray-50 p-2 md:p-0">
+      <section className="flex-1 overflow-y-auto bg-[#212121] p-2 md:p-0">
         <div className="max-w-4xl mx-auto p-4 space-y-3">
         {messages?.length === 0 && <WelcomeMessage />}
           {/* Messages list */}
@@ -245,7 +242,7 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
           {/* Loading indicator */}
           {isLoading && !streamedResponse && (
             <div className="flex justify-start animate-in fade-in-0">
-              <div className="rounded-2xl px-4 py-3 bg-white text-gray-900 rounded-bl-none shadow-sm ring-1 ring-inset ring-gray-200">
+              <div className="rounded-2xl px-4 py-3 bg-gray-500 text-gray-900 rounded-bl-none shadow-sm ">
                 <div className="flex items-center gap-1.5">
                   {[0.3, 0.15, 0].map((delay, i) => (
                     <div
@@ -265,7 +262,7 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
       </section>
 
       {/* Footer Input */}
-      <footer className="border-t bg-white p-4">
+      <footer className="border-t border-gray-500 bg-[#303030] p-4">
         <form onSubmit={handleSubmit} className="max-w-4xl mx-auto relative">
           <div className="relative flex items-center">
             <input
@@ -273,7 +270,7 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask Nexus..."
-              className="flex-1 py-3 px-4 rounded-2xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-12 bg-gray-50 placeholder:text-gray-500"
+              className="flex-1 py-3 px-4 rounded-2xl border border-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent pr-12 bg-[#3c3c3c] placeholder:text-gray-500 text-gray-200"
               disabled={isLoading}
             />
             <Button

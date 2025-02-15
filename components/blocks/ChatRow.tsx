@@ -19,9 +19,9 @@ export function ChatRow({
   }) {
     const router = useRouter();
     const { closeMobileNav } = useNavigation();
-    // const lastMessage = useQuery(api.messages.getLastMessage, {
-    //   chatId: chat._id,
-    // });
+    const lastMessage = useQuery(api.messages.getLastMessage, {
+      chatId: chat._id,
+    });
   
     const handleClick = () => {
       router.push(`/dashboard/chat/${chat._id}`);
@@ -30,22 +30,22 @@ export function ChatRow({
   
     return (
       <div
-        className="group rounded-xl border border-gray-200/30 bg-white/50 backdrop-blur-sm hover:bg-white/80 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+        className="group rounded-xl  bg-[#2f2f2f] backdrop-blur-sm hover:bg-[#444444] transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
         onClick={handleClick}
       >
         <div className="p-4">
           <div className="flex justify-between items-start">
-            {/* <p className="text-sm text-gray-600 truncate flex-1 font-medium">
+            <p className="text-sm text-gray-200 truncate flex-1 font-medium">
               {lastMessage ? (
                 <>
-                  {lastMessage.role === "user" ? "You: " : "AI: "}
+                  {/* {lastMessage.role === "user" ? "You: " : "AI: "} */}
                   {lastMessage.content.replace(/\\n/g, "\n")}
                 </>
               ) : (
-                <span className="text-gray-400">New conversation</span>
+                <span className="text-gray-200">New conversation</span>
               )}
-            </p> */}
-                    Chat
+            </p>
+            
             <Button
               variant="ghost"
               size="icon"
@@ -58,11 +58,11 @@ export function ChatRow({
               <TrashIcon className="h-4 w-4 text-gray-400 hover:text-red-500 transition-colors" />
             </Button>
           </div>
-          {/* {lastMessage && (
+          {lastMessage && (
             <p className="text-xs text-gray-400 mt-1.5 font-medium">
-              <TimeAgo date={lastMessage.createdAt} />
+              {/* <TimeAgo date={lastMessage.createdAt} /> */}
             </p>
-          )} */}
+          )}
         </div>
       </div>
     );

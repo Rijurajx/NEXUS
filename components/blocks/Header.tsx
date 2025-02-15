@@ -8,7 +8,7 @@ export default function Header() {
   const { setIsMobileNavOpen } = useNavigation();
 
   return (
-    <header className="border-b border-gray-200/50 bg-white/80 backdrop-blur-xl sticky top-0 z-50">
+    <header className="border-b border-gray-500 bg-[#212121] backdrop-blur-xl sticky top-0 z-50">
       <div className="flex items-center justify-between px-4 py-3">
         <div className="flex items-center gap-3">
           <Button
@@ -19,8 +19,8 @@ export default function Header() {
           >
             <HamburgerMenuIcon className="h-5 w-5" />
           </Button>
-          <div className="font-semibold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-            Ask Nexus
+          <div className="font-semibold bg-gradient-to-r from-gray-400 to-gray-200 bg-clip-text text-transparent">
+            Nexus
           </div>
         </div>
         <div className="flex items-center">
