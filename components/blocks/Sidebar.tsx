@@ -8,6 +8,7 @@ import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { ChatRow } from "./ChatRow";
+import "../../app/globals.css"
 interface Props {}
 
 const Sidebar = (props: Props) => {
@@ -51,7 +52,7 @@ const Sidebar = (props: Props) => {
           isMobileNavOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
-        <div className="p-2 border-b border-gray-200/50">
+        <div className="p-2 border-b border-gray-200/50 overflow-hidden">
           <Button
             onClick={handleNewChat}
             className="w-full bg-gray-200 hover:bg-gray-50 text-gray-700 border border-gray-200/50 shadow-sm hover:shadow transition-all duration-200"
@@ -60,7 +61,7 @@ const Sidebar = (props: Props) => {
           </Button>
         </div>
 
-        <div className="flex-1 overflow-y-auto space-y-2.5 p-4 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent">
+        <div className="flex-1 overflow-y-auto scrollbar-hide space-y-2.5 p-4">
           {chats?.map((chat) => (
             <ChatRow key={chat._id} chat={chat} onDelete={handleDeleteChat} />
           ))}
