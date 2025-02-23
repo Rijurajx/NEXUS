@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { SpotlightEffect } from "@/components/blocks/spotlight";
 import { Navbar } from "@/components/blocks/navbar";
 import { TimelineBlock } from "@/components/blocks/timelineBlock";

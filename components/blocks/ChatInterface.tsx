@@ -10,7 +10,7 @@ import { getConvexClient } from "@/lib/convex";
 import { api } from "@/convex/_generated/api";
 import { MessageBubble } from "./MessageBubble";
 import WelcomeMessage from "./WelcomeMessage";
-import "../../app/globals.css"
+import "../../app/globals.css";
 
 interface ChatInterfaceProps {
   chatId: Id<"chats">;
@@ -102,25 +102,46 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
 
     try {
       // Prepare chat history and new message for API
+      const filteredMessages = messages
+      .filter((msg) => msg.content && msg.content.trim()) // Remove empty messages
+      .map((msg) => ({
+        role: msg.role, // Keep it "user" or "assistant"
+        content: msg.content.trim(),
+      }));
+    
+    // Ensure there's always at least one message for context
+    if (filteredMessages.length === 0) {
+      filteredMessages.push({
+        role: "assistant",
+        content: "Hello! How can I assist you today?", // Default response to guide Gemini
+      });
+    }
+    
+
+
       const requestBody: ChatRequestBody = {
-        messages: messages.map((msg) => ({
-          role: msg.role,
-          content: msg.content,
-        })),
+        messages: filteredMessages, // Use the cleaned messages array
         newMessage: trimmedInput,
         chatId,
       };
 
       // Initialize SSE connection
+      // console.log("Requesting Gemini with:", JSON.stringify(requestBody, null, 2));
+
       const response = await fetch("/api/chat/stream", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestBody),
       });
+      // console.log("Gemini API Response:", response);
+
 
       if (!response.ok) throw new Error(await response.text());
-      if (!response.body) throw new Error("No response body available");
-
+      if (!response.body) {
+        console.error("Response body is empty!");
+        throw new Error("No response body available");
+      }
+      
       //-----Handle the stream-------//
       ///create SSE parser and stream reader
       const parser = createSSEParser();
@@ -160,9 +181,8 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
               // Handle completion of tool execution
               if ("tool" in message && currentTool) {
                 // Replace the "Processing..." message with actual output
-                const lastTerminalIndex = fullResponse.lastIndexOf(
-                  '<div bg-[#1e1e1e]'
-                );
+                const lastTerminalIndex =
+                  fullResponse.lastIndexOf("<div bg-[#1e1e1e]");
                 if (lastTerminalIndex !== -1) {
                   fullResponse =
                     fullResponse.substring(0, lastTerminalIndex) +
@@ -226,11 +246,11 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
   };
 
   return (
-    <main className="flex flex-col h-[calc(100vh-57px)] overflow-hidden">
+    <main className="flex flex-col h-[calc(100vh-57px)] overflow-hidden ">
       {/* Messages */}
-      <section className="flex-1 overflow-y-auto bg-[#212121] p-2 md:p-0">
+      <section className="flex-1 overflow-y-auto bg-[#212121] p-2 md:p-0 scrollbar-hide">
         <div className="max-w-4xl mx-auto p-4 space-y-3">
-        {messages?.length === 0 && <WelcomeMessage />}
+          {messages?.length === 0 && <WelcomeMessage />}
           {/* Messages list */}
           {messages?.map((message: Doc<"messages">) => (
             <MessageBubble
