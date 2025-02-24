@@ -69,17 +69,17 @@ export function TimelineBlock() {
             Added several powerful features to Nexus, enhancing automation capabilities and overall efficiency.
           </p>
           <div className="mb-8">
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-              ✅ AI-powered task automation
+            <div className="flex gap-2 items-center text-neutral-500 dark:text-neutral-300 text-xs md:text-sm">
+            • AI-powered task automation
             </div>
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-              ✅ Real-time data processing and insights
+            <div className="flex gap-2 items-center text-neutral-500 dark:text-neutral-300 text-xs md:text-sm">
+            • Real-time data processing and insights
             </div>
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-              ✅ Seamless integration with databases and APIs
+            <div className="flex gap-2 items-center text-neutral-500 dark:text-neutral-300 text-xs md:text-sm">
+            • Seamless integration with databases and APIs
             </div>
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-              ✅ Plugin support for extended functionality
+            <div className="flex gap-2 items-center text-neutral-500 dark:text-neutral-300 text-xs md:text-sm">
+            • Plugin support for extended functionality
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
