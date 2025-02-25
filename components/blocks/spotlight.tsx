@@ -2,7 +2,6 @@
 import React from "react";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import { Spotlight } from "../ui/spotlight-new";
-import ShimmerButton from "./shimmer-button";
 import Link from "next/link";
 import "../../app/globals.css"
 
