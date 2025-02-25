@@ -1,11 +1,9 @@
 "use client";
 import React from "react";
-import { useRouter } from "next/navigation"; // Import from next/navigation
 
 
 
 const ShimmerButton: React.FC = () => {
-  const router = useRouter(); // Initialize router
   
 
   return (

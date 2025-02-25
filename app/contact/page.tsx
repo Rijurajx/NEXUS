@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Navbar } from "@/components/blocks/navbar";
+import { HiOutlineOfficeBuilding } from "react-icons/hi";
+import { MdOutlineLocalPhone } from "react-icons/md";
+import { CiMail } from "react-icons/ci";
 
 const Contact: React.FC = () => {
   const sendContact = useMutation(api.contact.sendContact);
@@ -58,15 +61,15 @@ const Contact: React.FC = () => {
             </p>
             <div className="mt-6 space-y-4">
               <div className="flex items-center space-x-3">
-                <span className="text-[#6D6D6D]">🏢</span>
+                <span className="text-[#6D6D6D] text-2xl"><HiOutlineOfficeBuilding/></span>
                 <p className="text-gray-300">Nexus AI Hub, Sector-9, Cyber City</p>
               </div>
               <div className="flex items-center space-x-3">
-                <span className="text-[#6D6D6D]">📞</span>
+                <span className="text-[#6D6D6D] text-2xl"><MdOutlineLocalPhone/></span>
                 <p className="text-gray-300">+1 (800) NEXUS-AI</p>
               </div>
               <div className="flex items-center space-x-3">
-                <span className="text-[#6D6D6D]">✉️</span>
+                <span className="text-[#6D6D6D] text-2xl"><CiMail/></span>
                 <p className="text-gray-300">support@nexusai.io</p>
               </div>
             </div>

@@ -20,9 +20,8 @@ export default function Footer() {
           <ul className="flex flex-col md:flex-row justify-center gap-4 md:gap-8 text-sm">
             <li><Link href="/">Home</Link></li>
             <li><Link href="/about">About Nexus</Link></li>
-            <li><Link href="/features">Features</Link></li>
             <li><Link href="/contact">Contact</Link></li>
-            <li><Link href="/support">Support</Link></li>
+            <li><Link href="/dashboard">Dashboard</Link></li>
           </ul>
         </nav>
 
@@ -45,7 +44,6 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-center gap-6">
           <Link href="/privacy-policy">Privacy Policy</Link>
           <Link href="/terms-of-service">Terms of Service</Link>
-          <Link href="/cookies-settings">Cookies Settings</Link>
         </div>
       </div>
     </footer>
