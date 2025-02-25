@@ -9,9 +9,8 @@ import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { ChatRow } from "./ChatRow";
 import "../../app/globals.css"
-interface Props {}
 
-const Sidebar = (props: Props) => {
+const Sidebar = () => {
   const router = useRouter();
   const { isMobileNavOpen, closeMobileNav } = useNavigation();
 
@@ -33,10 +32,7 @@ const Sidebar = (props: Props) => {
     }
   };
 
-  const handleClick = () => {
-    // router.push(`/dashboard/chat/${chat._id}`);
-    closeMobileNav();
-  };
+ 
   return (
     <>
       {/* Background Overlay for mobile */}
