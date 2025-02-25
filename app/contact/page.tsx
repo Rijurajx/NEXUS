@@ -18,9 +18,13 @@ const Contact: React.FC = () => {
     message: "",
   });
 
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -38,7 +42,13 @@ const Contact: React.FC = () => {
       });
 
       setStatus("success");
-      setForm({ firstName: "", lastName: "", email: "", phoneNumber: "", message: "" });
+      setForm({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phoneNumber: "",
+        message: "",
+      });
 
       setTimeout(() => setStatus("idle"), 3000); // Reset status after 3s
     } catch (error) {
@@ -54,22 +64,34 @@ const Contact: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-8 bg-[#000000] p-8 rounded-lg shadow-lg">
           {/* Left Side - Contact Info */}
           <div className="flex justify-center flex-col">
-            <h2 className="text-5xl font-bold text-[#E0E0E0]">Connect with Nexus</h2>
+            <h2 className="text-5xl font-bold text-[#E0E0E0]">
+              Connect with Nexus
+            </h2>
             <p className="text-gray-400 mt-3">
-              Need AI-powered assistance? Nexus is here to enhance your workflow, automate tasks, and provide intelligent insights.
-              Reach out, and let's redefine efficiency together.
+              Need AI-powered assistance? Nexus is here to enhance your
+              workflow, automate tasks, and provide intelligent insights. Reach
+              out, and let&rsquo;s redefine efficiency together.
             </p>
+
             <div className="mt-6 space-y-4">
               <div className="flex items-center space-x-3">
-                <span className="text-[#6D6D6D] text-2xl"><HiOutlineOfficeBuilding/></span>
-                <p className="text-gray-300">Nexus AI Hub, Sector-9, Cyber City</p>
+                <span className="text-[#6D6D6D] text-2xl">
+                  <HiOutlineOfficeBuilding />
+                </span>
+                <p className="text-gray-300">
+                  Nexus AI Hub, Sector-9, Cyber City
+                </p>
               </div>
               <div className="flex items-center space-x-3">
-                <span className="text-[#6D6D6D] text-2xl"><MdOutlineLocalPhone/></span>
+                <span className="text-[#6D6D6D] text-2xl">
+                  <MdOutlineLocalPhone />
+                </span>
                 <p className="text-gray-300">+1 (800) NEXUS-AI</p>
               </div>
               <div className="flex items-center space-x-3">
-                <span className="text-[#6D6D6D] text-2xl"><CiMail/></span>
+                <span className="text-[#6D6D6D] text-2xl">
+                  <CiMail />
+                </span>
                 <p className="text-gray-300">support@nexusai.io</p>
               </div>
             </div>
@@ -80,7 +102,9 @@ const Contact: React.FC = () => {
             <form className="space-y-5" onSubmit={handleSubmit}>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-gray-300 font-medium">First Name</label>
+                  <label className="block text-gray-300 font-medium">
+                    First Name
+                  </label>
                   <input
                     type="text"
                     name="firstName"
@@ -91,7 +115,9 @@ const Contact: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-gray-300 font-medium">Last Name</label>
+                  <label className="block text-gray-300 font-medium">
+                    Last Name
+                  </label>
                   <input
                     type="text"
                     name="lastName"
@@ -116,7 +142,9 @@ const Contact: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-gray-300 font-medium">Phone Number</label>
+                <label className="block text-gray-300 font-medium">
+                  Phone Number
+                </label>
                 <input
                   type="text"
                   name="phoneNumber"
@@ -127,7 +155,9 @@ const Contact: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-gray-300 font-medium">Your Message</label>
+                <label className="block text-gray-300 font-medium">
+                  Your Message
+                </label>
                 <textarea
                   name="message"
                   value={form.message}
@@ -141,17 +171,23 @@ const Contact: React.FC = () => {
                 type="submit"
                 disabled={status === "loading"}
                 className={`w-full py-2 rounded-lg transition ${
-                  status === "loading" ? "bg-gray-500 cursor-not-allowed" : "bg-[#6A00F4] hover:bg-[#5200C9] text-white"
+                  status === "loading"
+                    ? "bg-gray-500 cursor-not-allowed"
+                    : "bg-[#6A00F4] hover:bg-[#5200C9] text-white"
                 }`}
               >
                 {status === "loading" ? "Sending..." : "Send Message"}
               </button>
 
               {status === "success" && (
-                <p className="text-green-400 text-sm mt-2">Message sent successfully!</p>
+                <p className="text-green-400 text-sm mt-2">
+                  Message sent successfully!
+                </p>
               )}
               {status === "error" && (
-                <p className="text-red-400 text-sm mt-2">Error sending message. Try again.</p>
+                <p className="text-red-400 text-sm mt-2">
+                  Error sending message. Try again.
+                </p>
               )}
             </form>
           </div>

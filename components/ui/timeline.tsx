@@ -1,9 +1,5 @@
 "use client";
-import {
-  useScroll,
-  useTransform,
-  motion,
-} from "framer-motion";
+import { useScroll, useTransform, motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
 interface TimelineEntry {
@@ -41,7 +37,9 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           Evolution of Nexus: The AI Automation Journey
         </h2>
         <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-sm">
-          Nexus has evolved into a powerful AI agent, seamlessly integrating with user systems for automation, intelligence, and efficiency. Here's a timeline of its journey.
+          Nexus has evolved into a powerful AI agent, seamlessly integrating
+          with user systems for automation, intelligence, and efficiency.
+          Here&apos;s a timeline of its journey.
         </p>
       </div>
 
