@@ -14,7 +14,8 @@ const About = () => {
             Nexus: Redefining AI Automation
           </h1>
           <p className="text-gray-400 mt-2">
-            Our journey towards intelligent automation, innovation, and efficiency.
+            Our journey towards intelligent automation, innovation, and
+            efficiency.
           </p>
         </div>
 
@@ -32,10 +33,13 @@ const About = () => {
 
           {/* About Us Box */}
           <div className="bg-[#3744aa]  p-6 rounded-2xl shadow-lg">
-            <h2 className="text-xl text-[#00c995] font-semibold mb-3">ABOUT NEXUS</h2>
+            <h2 className="text-xl text-[#00c995] font-semibold mb-3">
+              ABOUT NEXUS
+            </h2>
             <p className="text-sm leading-relaxed">
-              Nexus is an AI-powered automation system designed to integrate with your workflow seamlessly.
-              By leveraging state-of-the-art technology, we help businesses streamline operations, optimize
+              Nexus is an AI-powered automation system designed to integrate
+              with your workflow seamlessly. By leveraging state-of-the-art
+              technology, we help businesses streamline operations, optimize
               efficiency, and unlock new possibilities in AI-driven automation.
             </p>
           </div>
@@ -43,9 +47,10 @@ const About = () => {
           {/* Description */}
           <div className="bg-[#1A1A1A] p-6 rounded-2xl shadow-md md:col-span-2">
             <p className="text-gray-400 text-lg">
-              Our intelligent automation solutions enhance productivity by handling complex tasks, freeing up
-              valuable time for innovation. With Nexus, AI isn't just a tool—it’s an indispensable partner
-              in your journey towards technological advancement.
+              Our intelligent automation solutions enhance productivity by
+              handling complex tasks, freeing up valuable time for innovation.
+              With Nexus, AI isn&rsquo;t just a tool—it&rsquo;s an indispensable
+              partner in your journey towards technological advancement.
             </p>
           </div>
 
@@ -54,11 +59,10 @@ const About = () => {
             <Image
               src="/assets/logo.png"
               alt="AI Automation"
-            //   layout="fill"
-                          objectFit="cover"
-                          height={300}
-                            width={300}
-                        
+              //   layout="fill"
+              objectFit="cover"
+              height={300}
+              width={300}
             />
           </div>
         </div>
@@ -84,20 +88,22 @@ const About = () => {
           <div className="bg-[#1A1A1A] p-6 rounded-2xl shadow-md">
             <h3 className="text-xl font-bold text-[#6A00F4] mb-3">VISION</h3>
             <p className="text-gray-400">
-              Nexus envisions a future where AI seamlessly integrates with human potential, creating a
-              world where technology enhances creativity, efficiency, and problem-solving.
+              Nexus envisions a future where AI seamlessly integrates with human
+              potential, creating a world where technology enhances creativity,
+              efficiency, and problem-solving.
             </p>
           </div>
           <div className="bg-[#1A1A1A] p-6 rounded-2xl shadow-md">
             <h3 className="text-xl font-bold text-[#6A00F4] mb-3">MISSION</h3>
             <p className="text-gray-400">
-              Our mission is to develop cutting-edge AI solutions that simplify complex processes, allowing
-              businesses and individuals to focus on what truly matters: innovation and progress.
+              Our mission is to develop cutting-edge AI solutions that simplify
+              complex processes, allowing businesses and individuals to focus on
+              what truly matters: innovation and progress.
             </p>
           </div>
         </div>
-          </div>
-          <Footer/>
+      </div>
+      <Footer />
     </>
   );
 };
