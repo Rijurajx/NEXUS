@@ -7,7 +7,8 @@ schema
       "curl/index.graphql"
       "curl-01/index.graphql"
       "youtube_transcript/index.graphql"
-      "weather/index.graphql"
+      "math/index.graphql"
+      "exchange/index.graphql"
     ]
   ) {
   query: Query
