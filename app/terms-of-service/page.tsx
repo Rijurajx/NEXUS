@@ -13,7 +13,7 @@ const TermsAndConditions = () => {
         <p className="text-gray-400 mb-8">Last Updated: February 2025</p>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-[#6A00F4] mb-3">
+          <h2 className="text-2xl font-semibold text-white mb-3">
             1. Acceptance of Terms
           </h2>
           <p>
@@ -24,7 +24,7 @@ const TermsAndConditions = () => {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-[#6A00F4] mb-3">
+          <h2 className="text-2xl font-semibold text-white mb-3">
             2. User Accounts
           </h2>
           <p>
@@ -36,7 +36,7 @@ const TermsAndConditions = () => {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-[#6A00F4] mb-3">
+          <h2 className="text-2xl font-semibold text-white mb-3">
             3. Use of Services
           </h2>
           <p>
@@ -48,7 +48,7 @@ const TermsAndConditions = () => {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-[#6A00F4] mb-3">
+          <h2 className="text-2xl font-semibold text-white mb-3">
             4. Intellectual Property
           </h2>
           <p>
@@ -59,7 +59,7 @@ const TermsAndConditions = () => {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-[#6A00F4] mb-3">
+          <h2 className="text-2xl font-semibold text-white mb-3">
             5. Limitation of Liability
           </h2>
           <p>
@@ -72,7 +72,7 @@ const TermsAndConditions = () => {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-[#6A00F4] mb-3">
+          <h2 className="text-2xl font-semibold text-white mb-3">
             6. Changes to Terms
           </h2>
           <p>
@@ -83,13 +83,13 @@ const TermsAndConditions = () => {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-[#6A00F4] mb-3">
+          <h2 className="text-2xl font-semibold text-white mb-3">
             7. Contact Us
           </h2>
           <p>
             If you have any questions about these Terms and Conditions, please
             contact us at
-            <span className="text-[#6A00F4]"> support@nexusai.io</span>.
+            <span className="text-white"> support@nexusai.io</span>.
           </p>
         </section>
       </div>
